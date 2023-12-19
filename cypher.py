@@ -64,7 +64,7 @@ def main():
             if key in hashset:
                 hashset[key]()
             else:
-                print("Key not found in hashset.")
+                print("Something went wrong internally!!")
         else:
             print("Please enter a number from 0 - 8")
 
