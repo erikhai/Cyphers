@@ -2,11 +2,10 @@ from encryption_type import encryption_type
 
 
 def homepage():
-    while True:
-        user_input = (input('''Hello and welcome to the cipher program. This program allows you to encrypt or decrypt any message using one of the following cipher types
+    user_input = (input('''Hello and welcome to the cipher program. This program allows you to encrypt or decrypt any message using one of the following cipher types
 
-1. Basic Ceaser Cipher
-2. Advanced Ceaser Cipher
+1. Basic Ceaser Cipher (Shift value is 3)
+2. Advanced Ceaser Cipher (Shift value is customisable)
 3. Monoalphabetic Cipher
 4. Homophonic Substitution Cipher
 5. Polygram Substitution Cipher
@@ -16,10 +15,16 @@ def homepage():
 
 To input the message, you need to ensure the message is located in a text file.
 Please select a number from 1 - 8 or press 0 to exit the program: '''))
+    
+    while True:
+        
         if user_input.isdigit():
-            return int(user_input)
+            if 0 <= int(user_input) <= 8:
+                return int(user_input)
+            else:
+                user_input = input("Please enter a number from 0 - 8: ")
         else:
-            print("Please enter an integer from 0 - 8")
+            user_input = input("Please enter an integer from 0 - 8: ")
 
 def get_encrypt_or_decrypt():
     while True:
@@ -34,10 +39,10 @@ def main():
     encryption_types = encryption_type()
 
     hashset = {
-    (1, True): encryption_types.basic_ceaser_encrypt,
-    (1, False): encryption_types.basic_ceaser_decrypt,
-    (2, True): encryption_types.adv_ceaser_encrypt,
-    (2, False): encryption_types.adv_ceaser_decrypt,
+    (1, True): encryption_types.basic_caesar_encrypt,
+    (1, False): encryption_types.basic_caeser_decrypt,
+    (2, True): encryption_types.adv_caeser_encrypt,
+    (2, False): encryption_types.adv_caeser_decrypt,
     (3, True): encryption_types.monoalphabetic_encrypt,
     (3, False): encryption_types.monoalphabetic_decrypt,
     (4, True): encryption_types.homophonic_substitution_encrypt,
@@ -57,7 +62,7 @@ def main():
         first_user_input = homepage()
         if first_user_input == 0:
             break
-        elif 0 < first_user_input <= 8:
+        else:
             second_user_input = get_encrypt_or_decrypt()
             encrypt_flag = True if second_user_input == 1 else False
             key = (first_user_input, encrypt_flag)
@@ -65,8 +70,8 @@ def main():
                 hashset[key]()
             else:
                 print("Something went wrong internally!!")
-        else:
-            print("Please enter a number from 0 - 8")
+                break
+        
 
 
 if __name__ == "__main__":
