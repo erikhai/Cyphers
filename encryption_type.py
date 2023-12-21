@@ -1,15 +1,133 @@
 class encryption_type:
-    def basic_ceaser_encrypt(self):
-        print("basic ceaser encrypt")
+    def basic_caesar_encrypt(self):
+        filepath = input("This is the basic Caesar encryption. Please enter the file path of the message you want to encrypt: ")
+        shift = 3
+        try:
+            with open(filepath, 'r') as file:
+                # Read the entire content of the file
+                text = file.read()
+                
+                result = ""
+                
+                # Iterate through each character in the text
+                for char in text:
+         
+                    if char.isalpha():
+                        # Check if the character is uppercase
+                        if char.isupper():
+                            encrypted_char = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+                        else:
+                            encrypted_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+                        result += encrypted_char
+                    else:
+                        result += char
+                print("This is the encrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
-    def basic_ceaser_decrypt(self):
-        print("basic ceaser decrypt")
 
-    def adv_ceaser_encrypt(self):
-        print("adv ceaser encrypt")
+    def basic_caeser_decrypt(self):
+        filepath = input("This is the basic Caesar decryption. Please enter the file path of the message you want to decrypt: ")
+        shift = 3
+        try:
+            with open(filepath, 'r') as file:
+                # Read the entire content of the file
+                text = file.read()
 
-    def adv_ceaser_decrypt(self):
-        print("adv ceaser decrypt")
+                result = ""
+
+                # Iterate through each character in the text
+                for char in text:
+              
+                    if char.isalpha():
+                        # Check if the character is uppercase
+                        if char.isupper():
+                            decrypted_char = chr((ord(char) - ord('A') - shift) % 26 + ord('A'))
+                        else:
+                            decrypted_char = chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
+                        result += decrypted_char
+                    else:
+                        result += char
+                print("This is the decrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            
+    def adv_caeser_encrypt(self):
+        filepath = input("This is the advanced Caesar encryption. Please enter the file path of the message you want to encrypt: ")
+        while True:
+            shift = input("Please enter the shifting value: ")
+            if shift.isdigit() and int(shift) > 0:
+                break
+            else:
+                print("Please enter an integer greater than zero")  
+        shift = int(shift)  
+        try:
+            with open(filepath, 'r') as file:
+                # Read the entire content of the file
+                text = file.read()
+                
+                result = ""
+                
+                # Iterate through each character in the text
+                for char in text:
+         
+                    if char.isalpha():
+                        # Check if the character is uppercase
+                        if char.isupper():
+                            encrypted_char = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+                        else:
+                            encrypted_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+                        result += encrypted_char
+                    else:
+                        result += char
+                print("This is the encrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+    def adv_caeser_decrypt(self):
+        filepath = input("This is the advanced Caesar decryption. Please enter the file path of the message you want to decrypt: ")
+        while True:
+            shift = input("Please enter the shifting value: ")
+            if shift.isdigit() and int(shift) > 0:
+                break
+            else:
+                print("Please enter an integer greater than zero")  
+        shift = int(shift)  
+        try:
+            with open(filepath, 'r') as file:
+                # Read the entire content of the file
+                text = file.read()
+                
+                result = ""
+                
+                # Iterate through each character in the text
+                for char in text:
+         
+                    if char.isalpha():
+                        # Check if the character is uppercase
+                        if char.isupper():
+                            decrypted_char = chr((ord(char) - ord('A') - shift) % 26 + ord('A'))
+                        else:
+                            decrypted_char = chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
+                        result += decrypted_char
+                    else:
+                        result += char
+                print("This is the decrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def monoalphabetic_encrypt(self):
         print("monoalphabetic encrypt")
