@@ -129,11 +129,48 @@ class encryption_type:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def monoalphabetic_encrypt(self):
-        print("monoalphabetic encrypt")
+    
 
+    def monoalphabetic(self, filepath: str):
+        ALPHA_KEY = ['z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+        ALPHA_UPPER_KEY = ['Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A']
+
+        try:
+            with open(filepath, 'r') as file:
+                # Read the entire content of the file
+                text = file.read()
+                
+                result = ""
+                
+                # Iterate through each character in the text
+                for char in text:
+         
+                    if char.isalpha():
+                        # Check if the character is uppercase
+                        if char.isupper():
+                            encrypted_char = ALPHA_UPPER_KEY[ord(char) - ord('A')]
+                            
+                        else:
+                            encrypted_char = ALPHA_KEY[ord(char) - ord('a')]
+                            
+                        result += encrypted_char
+                    else:
+                        result += char
+                print("This is the decrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            
+    def monoalphabetic_encrypt(self):
+        filepath = input("This is the monoalphabetic encryption. Please enter the file path of the message you want to encrypt: ")
+        self.monoalphabetic(filepath)
+    
     def monoalphabetic_decrypt(self):
-        print("monoalphabetic decrypt")
+        filepath = input("This is the monoalphabetic decryption. Please enter the file path of the message you want to decrypt: ")
+        self.monoalphabetic(filepath)
+
 
     def homophonic_substitution_encrypt(self):
         print("homophonic substitution encrypt")
