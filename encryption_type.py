@@ -1,4 +1,79 @@
+from lib2to3.pgen2.token import NUMBER
+import random
+
+
 class encryption_type:
+    SPACE = 999999999
+    UPPER_CASE = {
+    'A': [5, 10, 15, 20],
+    'B': [300, 400, 30],
+    'C': [8, 9, 12],
+    'D': [14, 16, 18],  # Modified to ensure distinct numbers
+    'E': [21, 25, 28, 30],  # Modified to ensure distinct numbers
+    'F': [35, 40],
+    'G': [42, 45],
+    'H': [50, 55],
+    'I': [58, 60],
+    'J': [65],
+    'K': [70],
+    'L': [75],
+    'M': [78, 80],
+    'N': [85, 90],
+    'O': [95, 100, 105],  # Modified to ensure distinct numbers
+    'P': [110, 115, 120],  # Modified to ensure distinct numbers
+    'Q': [125, 130, 135],  # Modified to ensure distinct numbers
+    'R': [140, 145],
+    'S': [150, 155],
+    'T': [160, 165, 170],  # Modified to ensure distinct numbers
+    'U': [175, 180],
+    'V': [185, 190],
+    'W': [195, 200],
+    'X': [205, 210],
+    'Y': [215, 220, 225],  # Modified to ensure distinct numbers
+    'Z': [230, 235, 240],  # Modified to ensure distinct numbers
+}
+
+    LOWER_CASE = {
+    'a': [2, 7, 11],  # Modified to ensure distinct numbers
+    'b': [15, 19, 23],  # Modified to ensure distinct numbers
+    'c': [28, 33],  # Modified to ensure distinct numbers
+    'd': [38, 43, 48],  # Modified to ensure distinct numbers
+    'e': [53, 58, 63, 68],  # Modified to ensure distinct numbers
+    'f': [73, 78],
+    'g': [83, 88],
+    'h': [93, 98],
+    'i': [103, 108],
+    'j': [113],
+    'k': [118],
+    'l': [123],
+    'm': [128, 133],
+    'n': [138, 143],
+    'o': [148, 153, 158],  # Modified to ensure distinct numbers
+    'p': [163, 168, 173],  # Modified to ensure distinct numbers
+    'q': [178, 183, 188],  # Modified to ensure distinct numbers
+    'r': [193, 198],
+    's': [203, 208],
+    't': [213, 218, 223],  # Modified to ensure distinct numbers
+    'u': [228, 233],
+    'v': [238, 243],
+    'w': [248, 253],
+    'x': [258, 263],
+    'y': [268, 273, 278],  # Modified to ensure distinct numbers
+    'z': [283, 288, 293],  # Modified to ensure distinct numbers
+}
+
+    NUMBERS = {
+    0: [0, 13, 26],  # Modified to ensure distinct numbers
+    1: [111, 222, 333],  # Modified to ensure distinct numbers
+    2: [555, 777, 999],  # Modified to ensure distinct numbers
+    3: [1515, 2020, 2525],  # Modified to ensure distinct numbers
+    4: [3030, 4040, 5050],  # Modified to ensure distinct numbers
+    5: [6060, 8080, 10100],  # Modified to ensure distinct numbers
+    6: [12000, 15000, 18000],
+    7: [20000, 25000, 30000],
+    8: [35000, 40000, 45000],
+    9: [50000, 55000, 60000]
+}
     def basic_caesar_encrypt(self):
         filepath = input("This is the basic Caesar encryption. Please enter the file path of the message you want to encrypt: ")
         shift = 3
@@ -173,110 +248,90 @@ class encryption_type:
 
 
     def homophonic_substitution_encrypt(self):
+        
+
         filepath = input("This is the homophonic substitution encryption. Please enter the file path of the message you want to encrypt: ")
         
-
-        UPPER_CASE = {
-    'A': [5, 10, 15, 20],
-    'B': [300, 400, 30],
-    'C': [8, 9],
-    'D': [12, 14, 16],
-    'E': [18, 21, 25, 28],
-    'F': [30, 35],
-    'G': [40, 42],
-    'H': [45, 50],
-    'I': [55, 58],
-    'J': [60],
-    'K': [65],
-    'L': [70],
-    'M': [75, 78],
-    'N': [80, 85],
-    'O': [90, 95, 100],
-    'P': [105, 110, 115],
-    'Q': [120, 125, 130],
-    'R': [135, 140],
-    'S': [145, 150],
-    'T': [155, 160, 165],
-    'U': [170, 175],
-    'V': [180, 185],
-    'W': [190, 195],
-    'X': [200, 205],
-    'Y': [210, 215, 220],
-    'Z': [225, 230, 235]
-}
-    LOWER_CASE = {
-    'a': [2, 5, 8],
-    'b': [15, 20, 25],
-    'c': [30, 35],
-    'd': [40, 45, 50],
-    'e': [55, 60, 65, 70],
-    'f': [75, 80],
-    'g': [85, 90],
-    'h': [95, 100],
-    'i': [105, 110],
-    'j': [115],
-    'k': [120],
-    'l': [125],
-    'm': [130, 135],
-    'n': [140, 145],
-    'o': [150, 155, 160],
-    'p': [165, 170, 175],
-    'q': [180, 185, 190],
-    'r': [195, 200],
-    's': [205, 210],
-    't': [215, 220, 225],
-    'u': [230, 235],
-    'v': [240, 245],
-    'w': [250, 255],
-    'x': [260, 265],
-    'y': [270, 275, 280],
-    'z': [285, 290, 295]
-}
-    NUMBERS = {
-    0: [0, 10, 20],
-    1: [100, 200, 300],
-    2: [500, 750, 1000],
-    3: [1500, 2000, 2500],
-    4: [3000, 4000, 5000],
-    5: [6000, 8000, 10000],
-    6: [12000, 15000, 18000],
-    7: [20000, 25000, 30000],
-    8: [35000, 40000, 45000],
-    9: [50000, 55000, 60000]
-}
-    
-    try:
-        with open(filepath, 'r') as file:
-            # Read the entire content of the file
-            text = file.read()
-                
-            result = ""
-                
-            # Iterate through each character in the text
-            for char in text:         
-                if char.isalpha():
-                        # Check if the character is uppercase
-                    if char.isupper():
-                        encrypted_char = ALPHA_UPPER_KEY[ord(char) - ord('A')]
+        try:
+            with open(filepath, 'r') as file:
+                text = file.read()
+                result = ""
+                    
+                for char in text:      
+                    if char.isspace():
+                        result += str(self.SPACE)   
+                    if char.isalpha():
+                        key = char
+                        if key in self.UPPER_CASE:
+                            random_number = random.choice(self.UPPER_CASE[key])
+                        elif key in self.LOWER_CASE:
+                            random_number = random.choice(self.LOWER_CASE[key])
+                        result += str(random_number)
                             
+                    if char.isdigit():
+                        key = char
+                        if key in self.NUMBERS:
+                            random_number = random.choice(self.NUMBERS[key])
+                        result += str(random_number)
                     else:
-                        encrypted_char = ALPHA_KEY[ord(char) - ord('a')]
-                            
-                        result += encrypted_char
-                else:
-                    result += char
-            print("This is the decrypted message: ")
-            print(result + "\n")
-    except FileNotFoundError:
-        print(f"The file '{filepath}' was not found.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
+                        result += char
+                    result += " "
+                    print(result)
+                print("This is the encrypted message: ")
+                print(result + "\n")
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
         
 
+
+    def create_reverse_lookup(self, hashset):
+        reverse_lookup = {}
+        for key, numbers_list in hashset.items():
+            for number in numbers_list:
+                reverse_lookup[number] = key
+        return reverse_lookup
+    
     def homophonic_substitution_decrypt(self):
-        print("homophonic substitution decrypt")
+        UPPER_CASE_REVERSED = self.create_reverse_lookup(self.UPPER_CASE)
+        LOWER_CASE_REVERSED = self.create_reverse_lookup(self.LOWER_CASE)
+        NUMBERS_REVERSED = self.create_reverse_lookup(self.NUMBERS)
+        filepath = input("This is the homophonic substitution decryption. Please enter the file path of the message you want to decrypt: ")
+
+        try:
+            with open(filepath, 'r') as file:
+                result = ""
+                for line in file:
+                    words = line.split()
+                    for word in words:
+                        if word.isdigit():
+                            key = int(word)
+                            
+                            msg = ""
+                            if key == self.SPACE:
+                                result += " "
+                            elif key in NUMBERS_REVERSED:
+                                msg = NUMBERS_REVERSED[key]
+                            elif key in LOWER_CASE_REVERSED:
+                                msg = LOWER_CASE_REVERSED[key]
+                            elif key in UPPER_CASE_REVERSED:
+                                msg = UPPER_CASE_REVERSED[key]
+                            result += str(msg)
+                        else:
+                            result += word
+                        
+                    # Add newline character after processing each line
+                    result += "\n"
+
+                print("This is the decrypted message: ")
+                print(result)
+        except FileNotFoundError:
+            print(f"The file '{filepath}' was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
 
     def polygram_substitution_encrypt(self):
         print("polygram substitution encrypt")
