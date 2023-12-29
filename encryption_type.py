@@ -260,7 +260,7 @@ class encryption_type:
                 for char in text:      
                     if char.isspace():
                         result += str(self.SPACE)   
-                    if char.isalpha():
+                    elif char.isalpha():
                         key = char
                         if key in self.UPPER_CASE:
                             random_number = random.choice(self.UPPER_CASE[key])
@@ -268,7 +268,7 @@ class encryption_type:
                             random_number = random.choice(self.LOWER_CASE[key])
                         result += str(random_number)
                             
-                    if char.isdigit():
+                    elif char.isdigit():
                         key = char
                         if key in self.NUMBERS:
                             random_number = random.choice(self.NUMBERS[key])
@@ -276,7 +276,7 @@ class encryption_type:
                     else:
                         result += char
                     result += " "
-                    print(result)
+                    #print(result)
                 print("This is the encrypted message: ")
                 print(result + "\n")
         except FileNotFoundError:
