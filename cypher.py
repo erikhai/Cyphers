@@ -18,7 +18,7 @@ Please select a number from 1 - 8 or press 0 to exit the program: '''))
     
     while True:
         
-        if user_input.isdigit():
+        if user_input.isdigit(): #Checking for valid input
             if 0 <= int(user_input) <= 8:
                 return int(user_input)
             else:
@@ -29,7 +29,7 @@ Please select a number from 1 - 8 or press 0 to exit the program: '''))
 def get_encrypt_or_decrypt():
     while True:
         user_input = input("Press 1 to encrypt or 2 to decrypt: ")
-        if user_input.isdigit() and user_input in {'1', '2'}:
+        if user_input.isdigit() and user_input in {'1', '2'}:  #Checking for valid input
             return int(user_input)
         else:
             print("Please enter either 1 or 2")
@@ -38,7 +38,7 @@ def get_encrypt_or_decrypt():
 def main():
     encryption_types = encryption_type()
 
-    hashset = {
+    hashset = { #Contains all possible encryption and decryption types
     (1, True): encryption_types.basic_caesar_encrypt,
     (1, False): encryption_types.basic_caeser_decrypt,
     (2, True): encryption_types.adv_caeser_encrypt,
@@ -47,14 +47,7 @@ def main():
     (3, False): encryption_types.monoalphabetic_decrypt,
     (4, True): encryption_types.homophonic_substitution_encrypt,
     (4, False): encryption_types.homophonic_substitution_decrypt,
-    (5, True): encryption_types.polygram_substitution_encrypt,
-    (5, False): encryption_types.polygram_substitution_decrypt,
-    (6, True): encryption_types.polyalphabetic_substitution_encrypt,
-    (6, False): encryption_types.polyalphabetic_substitution_decrypt,
-    (7, True): encryption_types.playfair_encrypt,
-    (7, False): encryption_types.playfair_decrypt,
-    (8, True): encryption_types.hill_encrypt,
-    (8, False): encryption_types.hill_decrypt,
+
 }
 
 
@@ -68,7 +61,7 @@ def main():
             key = (first_user_input, encrypt_flag)
             if key in hashset:
                 hashset[key]()
-            else:
+            else: #Stop program if there is no key available
                 print("Something went wrong internally!!")
                 break
         
