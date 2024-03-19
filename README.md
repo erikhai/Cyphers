@@ -11,4 +11,5 @@ Despite being a software engineer, I have always had an interest in cybersecurit
 
 ## Future plans for this project?
 1. Do the same project in Java.
-2. Add more types such as Playfair and hills
+2. Convert this to a GUI
+3. Add more types such as Playfair and hills
